@@ -1,0 +1,69 @@
+trigger:
+- main
+
+stages:
+
+# =======================
+# CI STAGE
+# =======================
+- stage: Build
+  displayName: CI - Build & Test
+  jobs:
+  - job: BuildJob
+    displayName: Build Java App
+    pool:
+      name: My-agent
+
+    steps:
+    - script: |
+        echo "Checking Java version"
+        java -version
+        javac -version
+      displayName: 'Verify Java 17'
+
+    - script: |
+        echo "Checking Maven version"
+        mvn -v
+      displayName: 'Verify Maven'
+
+    - script: |
+        mvn clean compile
+      displayName: 'Compile'
+
+    - script: |
+        mvn test
+      displayName: 'Run Unit Tests'
+
+    - script: |
+        mvn package
+      displayName: 'Package JAR'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: 'target'
+        ArtifactName: 'java17-artifact'
+        publishLocation: 'Container'
+
+# =======================
+# CD STAGE
+# =======================
+- stage: Deploy
+  displayName: CD - Deploy to Azure App Service
+  dependsOn: Build
+  jobs:
+  - job: DeployJob
+    displayName: Deploy JAR
+    pool:
+      name: My-agent
+
+    steps:
+    - download: current
+      artifact: java17-artifact
+
+    - task: AzureWebApp@1
+      displayName: Deploy to App Service
+      inputs:
+        azureSubscription: 'Azureagent1'
+        appType: 'webAppLinux'
+        appName: 'my-java-app'
+        package: '$(Pipeline.Workspace)/java17-artifact/*.jar'

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess Game</title>
+</head>
+<body>
+  <h1>🎮 Guess the Number (1–10)</h1>
+
+  <input type="number" id="num">
+  <button onclick="play()">Guess</button>
+
+  <p id="result"></p>
+
+  <script>
+    function play() {
+      const n = document.getElementById("num").value;
+      fetch("/guess/" + n)
+        .then(r => r.text())
+        .then(d => document.getElementById("result").innerText = d);
+    }
+  </script>
+</body>
+</html>
