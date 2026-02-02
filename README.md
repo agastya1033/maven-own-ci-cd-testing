@@ -1,5 +1,7 @@
 # maven-with-cicd-build-and-deploy
+
 🟢 FULL LEARNING LIST FROM THIS PROJECT
+
 1️⃣ Environment Setup / Prerequisites
 
 Operating System: Ubuntu VM for self-hosted agent
@@ -7,12 +9,10 @@ Operating System: Ubuntu VM for self-hosted agent
 Installed Tools:
 
 Java 17 (JDK + JRE)
-
 Maven (for build & dependency management)
-
 Git (code version control)
-
 Configured: Azure DevOps self-hosted agent for pipelines
+
 
 Learned to verify installations with:
 
@@ -24,23 +24,15 @@ git --version
 2️⃣ Maven & Project Setup
 
 Learned about Maven project structure
-
 Created / updated pom.xml for:
-
 Java 17
-
 Spring Boot Web
-
 Logging (SLF4J, Logback)
-
 JSON processing (Jackson)
-
 Unit testing (JUnit / Spring Boot Test)
-
 Build plugins (Compiler, Surefire, Spring Boot Maven Plugin)
 
 Learned Maven commands:
-
 mvn clean
 mvn compile
 mvn test
@@ -104,19 +96,15 @@ Learned artifact management:
 
 Azure DevOps PublishBuildArtifacts@1
 
-Learned SonarQube integration option (optional, not yet implemented)
+Learned SonarQube integration option(optional, not yet implemented)
 ================================================================
 
 6️⃣ Azure DevOps CD Pipeline (Continuous Deployment)
 
 Learned to deploy a Java Spring Boot JAR to Azure App Service
-
 Used AzureWebApp@1 task in YAML
-
 Connected pipeline to App Service
-
 Learned artifact download and deployment steps
-
 Learned to configure App Service runtime (Java 17, Linux)
 
 ===================================================================
@@ -125,53 +113,32 @@ Learned to configure App Service runtime (Java 17, Linux)
 7️⃣ Verification / Testing Post-Deployment
 
 Checked live App Service URL
-
 Tested:
-
 / → game UI loads
-
 /index.html → static page loads
-
 /guess/{number} → backend logic
-
 /health → application health
-
 Learned to debug Whitelabel Error Pages
-
 Correct placement of index.html
-
 Added HomeController to map / → /index.html
-
 Checked Azure App Service logs
-
 Verified Java version & startup command
 
 =======================================================
 
 8️⃣ Key DevOps & CI/CD Concepts Learned
-
 Self-hosted vs Microsoft-hosted agents
-
 Pipelines trigger automatically on push (main branch)
-
 Artifact generation & publishing
-
 Multi-step build process:
-
 Build → Test → Package → Deploy
-
 Pipeline YAML structure:
-
 Stages (Build, Deploy)
-
 Jobs, Tasks, Scripts
-
+=============
 Environment management in Azure:
-
 App Service configuration
-
 Java version settings
-
 Startup command
 
 How application updates flow end-to-end automatically
@@ -181,11 +148,8 @@ How application updates flow end-to-end automatically
 9️⃣ Optional / Advanced Learnings
 
 How to integrate SonarQube (for code quality)
-
 How to add multi-stage deployment (Dev → UAT → Prod)
-
 Application Insights for monitoring
-
 Using Spring Profiles for environments
 
 Extending app (like adding a mini game or feature)
@@ -216,8 +180,6 @@ Do you want me to make that?
 
 
 ==============
-
-Perfect! Let’s make a visual DevOps + CI/CD flowchart for your project. I’ll break it down step by step so you can show it in interviews or documentation.
 
 Here’s a diagram in text / flow style and I’ll also give a ready-to-use Mermaid version for diagrams if you want to generate one.
 
